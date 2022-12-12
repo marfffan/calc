@@ -7,87 +7,56 @@ public class Main {
         System.out.println("Введите команду ");
         Scanner scanner = new Scanner(System.in);
         String command = scanner.nextLine();
-        System.out.println("Вы ввели - " + command);
         Main.calc(command);
     }
 
     public static String calc(String input) {
         String oper = input.replaceAll("\\w|\\d", "");
-        System.out.println("Оператор - " + oper);
         String[] comand = input.split("[+-/*]", 2);
-        System.out.println("Первое число - " + comand[0]);
-        System.out.println("Второе число - " + comand[1]);
         // Проверяем какие числа нам передали если это арабские то будет больше 0 если римкие то будет 0
         int chek = Integer.parseInt(comand[0].replaceAll("[A-Za-zА-Яа-я]", "0"));
-        System.out.println("Проверка  " + chek);
         int result = 0;
         if (chek <= 0) {
-            System.out.println("Расчёт в римских");
             int numrom1 = roman(comand[0]);
             int numrom2 = roman(comand[1]);
-            System.out.println("Проверка римских цифр" + numrom1 + numrom2);
             switch (oper) {
                 case "+":
                     result = numrom1 + numrom2;
-                    System.out.println("Проверка калькулятора  " + result);
                     break;
                 case "-":
                     result = numrom1 - numrom2;
-                    System.out.println("Проверка калькулятора  " + result);
                     break;
                 case "*":
                     result = numrom1 * numrom2;
-                    System.out.println("Проверка калькулятора  " + result);
                     break;
                 case "/":
                     result = numrom1 / numrom2;
-                    System.out.println("Проверка калькулятора  " + result);
                     break;
                 default:
                     System.out.println(" ");
             }
-            System.out.println("Расчёт произведен : " + result+roman[result]);
+            System.out.println(comand[0]+oper+comand[1]+"=" +roman[result]);
         } else {
-            System.out.println("Расчёт в арабских");
             int num1 = Integer.parseInt(comand[0]);
             int num2 = Integer.parseInt(comand[1]);
             switch (oper) {
                 case "+":
                     result = num1 + num2;
-
                     break;
                 case "-":
                     result = num1 - num2;
-
                     break;
                 case "*":
                     result = num1 * num2;
-
                     break;
                 case "/":
                     result = num1 / num2;
-
                     break;
                 default:
-                    System.out.println("Операция не распознана. Повторите ввод.");
+                    System.out.println("");
             }
-            System.out.println("Расчёт произведен : " + result);
+            System.out.println(num1+oper+num2+"= " + result);
         }
-
-        ///   int ifnum2= Integer.parseInt(comand[1].replaceAll("\"[A-Za-zА-Яа-я0-9]\"", "0"));
-//        String operator = comand[1];
-        //       System.out.println(ifnum1);
-//        System.out.println(ifnum2);
-//        System.out.println(comand[1]);
-        //       if (ifnum1 > 0 && ifnum2 > 0){
-        //           System.out.println("Расчёт должен быть в арабских");
-        //     }else {
-        //       System.out.println("Расчёт должен быть в римских");
-        //    }
-        //  String [] arab = {"0","1","2","3","4","5","6","7","8","9","10"};
-        //   String [] rome ={"0","I","II","III","IV","V","VI","VII","VIII","IX","X"};
-        //  int romenum = Arrays.asList(rome).indexOf("III");
-        //  System.out.println(" Римская "   + arab[romenum]);
         return input;
     }
 
@@ -125,25 +94,4 @@ public class Main {
         return -1;
     }
 }
-//    public static int calcul(int num1, int num2, String operator) {
-//        switch (operator) {
-//            case "+":
-//                result = num1 + num2;
-//                break;
-//            case "-":
-//                result = num1 - num2;
-//                break;
-//            case "*":
-//                result = num1 * num2;
-//                break;
-//            case "/":
-//                result = num1 / num2;
-//                break;
-//            default:
-//                System.out.println("Операция не распознана. Повторите ввод.");
-//        }
-//        System.out.println("Расчёт произведен : " + result);
-//        return num1;
-//    }
-
 
